@@ -1,3 +1,4 @@
+
 for (let i = 1; i <= 100; i++) {
     console.log(evaluateNumber(i));
 }
@@ -17,7 +18,7 @@ function evaluateNumber(i) {
         modifiers = ["Bong"];
     }
     if (i % 13 == 0) {
-        insertFezz(modifiers);
+        modifiers = insertFezz(modifiers);
     }
     if (i % 17 == 0) {
         modifiers.reverse();
@@ -30,9 +31,10 @@ function evaluateNumber(i) {
 }
 
 function insertFezz(modifiers) {
-    let i = 0;
-    for (; i < modifiers.length && modifiers[i][0] != "B" ; i++ ){
+    for (let i = 0;; i++ ) {
+        if (i >= modifiers.length || modifiers[i][0] == "B") {
+            modifiers.splice(i, 0, "Fezz");
+            return modifiers;
+        }
     }
-    modifiers.splice(i, 0, "Fezz");
-    return modifiers;
 }
