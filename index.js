@@ -1,5 +1,9 @@
 for (let i = 1; i <= 100; i++) {
-    var modifiers = new Array();
+    console.log(evaluateNumber(i));
+}
+
+function evaluateNumber(i) {
+    let modifiers = [];
     if (i % 3 == 0) {
         modifiers.push("Fizz");
     }
@@ -9,9 +13,26 @@ for (let i = 1; i <= 100; i++) {
     if (i % 7 == 0) {
         modifiers.push("Bang");
     }
-    if (modifiers.length == 0) {
-        console.log(i);
-    } else {
-        console.log(modifiers.join(deliminator=""));
+    if (i % 11 == 0) {
+        modifiers = ["Bong"];
     }
+    if (i % 13 == 0) {
+        insertFezz(modifiers);
+    }
+    if (i % 17 == 0) {
+        modifiers.reverse();
+    }
+    if (modifiers.length == 0) {
+        return i;
+    } else {
+        return modifiers.join(deliminator="");
+    }
+}
+
+function insertFezz(modifiers) {
+    let i = 0;
+    for (; i < modifiers.length && modifiers[i][0] != "B" ; i++ ){
+    }
+    modifiers.splice(i, 0, "Fezz");
+    return modifiers;
 }
